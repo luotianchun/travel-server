@@ -9,7 +9,8 @@
 
 const handlePublicMessage = async (request)=>{
     try {   
-        if(request?.MsgType === "text" && request?.Content==="测试"){
+        console.log("处理公众号消息",request,request?.MsgType === "text" && request?.Content==="测试");
+        if(request?.MsgType === "text" && request?.Content === "测试"){
             const { ToUserName, FromUserName, MsgType, Content, CreateTime } = req.body
             return {
                 ToUserName: FromUserName,
