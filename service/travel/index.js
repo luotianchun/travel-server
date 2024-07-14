@@ -7,11 +7,15 @@
 //     MsgId: 24638235016855684
 //   }
 
+const testService = async()=>{
+    console.log('hello>>>'); //sy-log
+}
+
 const handlePublicMessage = async (request)=>{
     try {   
         console.log("处理公众号消息",request,request?.MsgType === "text" && request?.Content==="测试");
         if(request?.MsgType === "text" && request?.Content === "测试"){
-            const { ToUserName, FromUserName, MsgType, Content, CreateTime } = req.body
+            const { ToUserName, FromUserName, MsgType, Content, CreateTime } = request
             return {
                 ToUserName: FromUserName,
                 FromUserName: ToUserName,
@@ -29,5 +33,6 @@ const handlePublicMessage = async (request)=>{
 
 
 module.exports={
+    testService,
     handlePublicMessage
 }
