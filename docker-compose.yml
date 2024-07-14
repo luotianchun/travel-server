@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '27081:80'
+    container_name: wxcloud_travel-server
+    labels:
+      - wxPort=27082
+      - hostPort=27081
+      - wxcloud=travel-server
+      - role=container
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=3Ze52kMtuuqT76Y
+      - MYSQL_ADDRESS=sh-cynosdbmysql-grp-gw0z6fb2.sql.tencentcdb.com:27246
+networks:
+  default:
+    external:
+      name: wxcb0

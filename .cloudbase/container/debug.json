@@ -1,0 +1,46 @@
+{
+  "containers": [
+    {
+      "name": "travel-server",
+      "domain": "",
+      "ip": "",
+      "mode": "compose",
+      "containerId": "afa10ff2a8447c28d369097f8fc278be54e9fee3c6bbcefcf4ad65038522abc4"
+    }
+  ],
+  "config": {
+    "travel-server": {
+      "containerPort": 80,
+      "dockerfilePath": "Dockerfile",
+      "buildDir": "",
+      "minNum": 0,
+      "maxNum": 5,
+      "cpu": 1,
+      "mem": 2,
+      "policyType": "cpu",
+      "policyThreshold": 80,
+      "policyDetails": [
+        {
+          "PolicyType": "cpu",
+          "PolicyThreshold": 80
+        },
+        {
+          "PolicyType": "mem",
+          "PolicyThreshold": 80
+        }
+      ],
+      "envParams": {
+        "MYSQL_USERNAME": "root",
+        "MYSQL_PASSWORD": "3Ze52kMtuuqT76Y",
+        "MYSQL_ADDRESS": "sh-cynosdbmysql-grp-gw0z6fb2.sql.tencentcdb.com:27246"
+      },
+      "customLogs": "stdout",
+      "initialDelaySeconds": 2,
+      "dataBaseName": "nodejs_demo",
+      "executeSQLs": [
+        "CREATE DATABASE IF NOT EXISTS nodejs_demo;",
+        "USE nodejs_demo;"
+      ]
+    }
+  }
+}
