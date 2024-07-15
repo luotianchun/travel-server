@@ -11,7 +11,7 @@ async function initcos() {
   try {
     const res = await axios.get('http://api.weixin.qq.com/_/cos/getauth')
     const info = JSON.parse(res)
-    console.log('info',info); //sy-log
+    console.log('info1',info); //sy-log
 //    const a= new COS({
 //       getAuthorization: async function (options, callback) {
 //         const res = await axios.get('http://api.weixin.qq.com/_/cos/getauth')
