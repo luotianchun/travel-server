@@ -2,11 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const { handlePublicMessage,testService } = require("../service/travel/index");
+const { handlePublicMessage, testService } = require("../service/travel/index");
 
 router.get("/test/a/", async (req, res) => {
-    testService()
-    console.log('123123'); //sy-log
+  testService();
   res.status(201).send({
     code: 0,
     data: 222,
