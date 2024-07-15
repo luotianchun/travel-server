@@ -27,9 +27,9 @@ async function initcos() {
         callback(auth);
       },
     });
-    console.log("COS初始化成功");
+    console.log("COS初始化成功1");
   } catch (e) {
-    console.log("COS初始化失败", res);
+    console.log("COS初始化失败1", res);
   }
 }
 
