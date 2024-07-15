@@ -27,7 +27,7 @@ const handlePublicMessage = async (request)=>{
         }
         return "success"
     } catch (error) {
-        
+        console.log('error',error); //sy-log
     }
 }
 
