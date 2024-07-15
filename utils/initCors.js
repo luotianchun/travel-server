@@ -8,27 +8,10 @@ initcos()
  */
 async function initcos() {
   try {
-    const res = await fetch('http://api.weixin.qq.com/_/cos/getauth', {
+    const res = await fetch('https://api.weixin.qq.com/_/cos/getauth', {
       method: 'GET'
   })
-  console.log('res',res); //sy-log
-    // const info = JSON.parse(res)
-    // console.log('info1',info); //sy-log
-//    const a= new COS({
-//       getAuthorization: async function (options, callback) {
-//         const res = await axios.get('http://api.weixin.qq.com/_/cos/getauth')
-//         const info = JSON.parse(res)
-//         console.log('info',info); //sy-log
-//         const auth = {
-//           TmpSecretId: info.TmpSecretId,
-//           TmpSecretKey: info.TmpSecretKey,
-//           SecurityToken: info.Token,
-//           ExpiredTime: info.ExpiredTime,
-//         }
-//         callback(auth)
-//       },
-//     })
-    console.log('COS初始化成功',)
+    console.log('res',res);
   } catch (e) {
     console.log('COS初始化失败', e)
   }
