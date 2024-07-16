@@ -1,8 +1,11 @@
 const express = require("express");
-
 const router = express.Router();
 
-const { handlePublicMessage, testService } = require("../service/travel/index");
+const {
+  handlePublicMessage,
+  testService,
+  getCosSecret,
+} = require("../service/travel/index");
 const { getFile } = require("../utils/initCos");
 
 router.get("/test/a/", async (req, res) => {
@@ -17,6 +20,22 @@ router.post("/public", async (req, res) => {
   console.log("消息推送", req.body);
   const result = await handlePublicMessage(req.body);
   res.send(result); // 不进行任何回复，直接返回success，告知微信服务器已经正常收到。
+});
+
+router.get("/cossecret", async (req, res) => {
+  try {
+    const result = await getCosSecret();
+    res.send({
+      code: 0,
+      data: result,
+    });
+  } catch (error) {
+    console.log("get cos secret error", error); //sy-log
+    res.send({
+      code: -1,
+      msg: "获取失败",
+    });
+  }
 });
 
 router.get("/file", async (req, res) => {
