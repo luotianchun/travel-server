@@ -1,5 +1,4 @@
 const request = require("request");
-const fetch = require("node-fetch");
 
 const cosConfig = {
   Bucket: process.env.Bucket || "7072-prod-3g6dy8yy408b83d7-1327573193", // 填写云托管对象存储桶名称
@@ -11,26 +10,26 @@ const cosConfig = {
  */
 async function initcos() {
   const COS = require("cos-nodejs-sdk-v5");
+  const res = await call({
+    url: "http://api.weixin.qq.com/_/cos/getauth",
+    method: "GET",
+  });
   try {
-    const res = await fetch("http://api.weixin.qq.com/_/cos/getauth", {
-      method: "GET",
+    const info = JSON.parse(res);
+    const auth = {
+      TmpSecretId: info.TmpSecretId,
+      TmpSecretKey: info.TmpSecretKey,
+      SecurityToken: info.Token,
+      ExpiredTime: info.ExpiredTime,
+    };
+    this.cos = new COS({
+      getAuthorization: async function (options, callback) {
+        callback(auth);
+      },
     });
-    console.log("res", res); //sy-log
-    // const info = JSON.parse(res);
-    // const auth = {
-    //   TmpSecretId: info.TmpSecretId,
-    //   TmpSecretKey: info.TmpSecretKey,
-    //   SecurityToken: info.Token,
-    //   ExpiredTime: info.ExpiredTime,
-    // };
-    // this.cos = new COS({
-    //   getAuthorization: async function (options, callback) {
-    //     callback(auth);
-    //   },
-    // });
-    // console.log("COS初始化成功1");
+    console.log("COS初始化成功1");
   } catch (e) {
-    console.log("COS初始化失败2", e);
+    console.log("COS初始化失败1", e);
   }
 }
 

@@ -4,8 +4,7 @@
       "name": "travel-server",
       "domain": "",
       "ip": "",
-      "mode": "compose",
-      "containerId": "ffe54b4ddda22c365eca062588737448464eba0c29e9f7b2dba0593b14b0109a"
+      "containerId": "157d42d3e8ccbbef4b40e9b71fd56c43adde35c0f348fffbb9a0fa90fee06a0e"
     }
   ],
   "config": {
