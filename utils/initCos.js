@@ -30,7 +30,7 @@ async function initcos() {
     // });
     // console.log("COS初始化成功1");
   } catch (e) {
-    console.log("COS初始化失败1", e);
+    console.log("COS初始化失败2", e);
   }
 }
 
