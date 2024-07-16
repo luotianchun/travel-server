@@ -29,7 +29,7 @@ async function initcos() {
     });
     console.log("COS初始化成功1");
   } catch (e) {
-    console.log("COS初始化失败1", res);
+    console.log("COS初始化失败1", e);
   }
 }
 
@@ -48,6 +48,7 @@ function call(obj) {
         body: JSON.stringify(obj.data || {}),
       },
       function (err, response) {
+        console.log("request error", err); //sy-log
         if (err) reject(err);
         resolve(response?.body);
       }
